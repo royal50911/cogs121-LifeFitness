@@ -1,0 +1,151 @@
+/* -- Global css classes -- */
+.text-lighter {
+	font-weight: 300;
+}
+
+.text-lightest {
+	font-weight: 100;
+}
+
+
+/* -- Global font -- */
+* {
+	font-family: 'Roboto';
+}
+
+/* Fix fluid container */
+.container-fluid {
+	padding: 0;
+}
+
+/* -- Bootstrap Navbar Edits -- */
+/* Sets height of navbar and it's elements */
+.navbar-brand, .navbar-nav li a {
+	height: 70px;
+	line-height: 70px;
+	padding-top: 0;
+	font-weight: 400;
+}
+
+/* Pushes content of page below navbar */
+body {
+	padding-top: 70px;
+}
+
+
+/* Changes Brand text color */
+.navbar-default .navbar-brand {
+	color: blue;
+	font-weight: 400;
+}
+
+/* navbar */
+.navbar-default {
+    background-color: white;
+    
+    opacity: 0.98;
+}
+/* Changes Brand text color */
+.navbar-default .navbar-brand {
+    color: #3BC8C8;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #62D8D8;
+}
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: #444;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #62D8D8;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #19BBBB;
+    background-color: white;
+    border-bottom: 1px solid #3BC8C8;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #19BBBB;
+    background-color: #EEEEEE;
+}
+/* caret */
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: #19BBBB;
+    border-bottom-color: #19BBBB;
+}
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: #62D8D8;
+    border-bottom-color: #62D8D8;
+}
+
+a {
+	color: #3BC8C8;
+}
+
+a:hover {
+	color: #62D8D8;
+	text-decoration: none;
+}
+
+.navbar-default .navbar-nav > li > .logout {
+    color: #ED5B3E;
+}
+
+.navbar-default .navbar-nav > li > .logout:hover,
+.navbar-default .navbar-nav > li > .logout:focus  {
+    color: #E5745D;
+}
+
+/* -- BUTTONS -- */
+.btn-submit {
+	width: 100%;
+}
+
+.btn-default {
+	background-color: #3BC8C8;
+	border-color: #3BC8C8;
+	color: white;
+	font-weight: 400;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active {
+	background-color: #62D8D8;
+	border-color: #62D8D8;
+	color: white;
+}
+
+.img-responsive {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: -1;
+	min-width: 1200px;
+	overflow: hidden;
+}
+
+.jumbotron {
+	opacity: 0.9;
+	position: fixed;
+	width :100%;
+}
+
+.about {
+	position: fixed;
+}
+
+
+
+.jumbotron-about {
+	opacity: 0.8;
+	background-color: #DDD;
+}
+
+
+
