@@ -24,6 +24,31 @@ db.once('open', function (callback) {
   console.log("Database connected succesfully.");
 });
 
+// postgres database (Delphi)
+dotenv.load();
+var pg = require('pg');
+var connectionString = "postgres://" +
+                       process.env.DELPHI_USERNAME + ":" +
+                       process.env.DELPHI_PASSWORD +
+                       "@delphidata.ucsd.edu:5432/delphibetadb";
+
+pg.connect(connectionString, function(err, client, done) {
+    if (err) {
+        return console.error('Error connecting to Delphi: ', err);
+    }
+    
+    client.query('SELECT * FROM hhsa_suicide_by_age_2010_2012 ORDER BY "Death Rate" DESC LIMIT 20;', function(err, result) {
+        done();
+        
+        if (err) {
+            return console.error('PSQL ERR: ', err);
+        }
+        
+        console.log(result);
+     });
+    
+});
+
 require('./config/passport')(passport); // pass passport for configuration
 
 // configure application
