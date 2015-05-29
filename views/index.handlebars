@@ -8,17 +8,31 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand text-uppercase" href="/">LifeFitness</a>
+          <a class="navbar-brand text-uppercase" href="/">PlotSD</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right"><!--
             <li><a href="/signup" class="text-uppercase">Sign Up</a></li>
-            <li><a href="/login" class="text-uppercase">Log In <span class="sr-only">(current)</span></a></li>
+            <li><a href="/login" class="text-uppercase">Log In <span class="sr-only">(current)</span></a></li> -->
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
+    <div class="col-sm-4 col-sm-offset-4">
 
-    <h1>(Landing/Home Page)</h1>
-    <a href="/signup">Get Started</a>
+    <h1 class="text-center text-lightest">PlotSD by LifeFitness</h1>
+
+    <!-- show any messages that come back with authentication -->
+    {{#if message}}
+        <div class="alert alert-danger">{{message}}</div>
+    {{/if}}
+    <!-- LOGIN FORM *NEEDS TO BE CHANGED TO WORK* -->
+    <form action="/signup" method="get">
+        <p>A visualization of San Diego County, based on you, to keep you healthy, informed and safe.</p>
+
+        <button type="submit" class="btn btn-default btn-submit text-uppercase">GET STARTED</button>
+    </form>
+</div>
+
+    
