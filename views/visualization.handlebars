@@ -18,11 +18,84 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-<div class="col-md-8" id="map">
+
+<!-- *.,.,.,.,.,.,.,.,,.,.,.,.,.,* -->
+<!-- INCLUDE THIS LATER LOCALLY -->
+<!-- *.,.,.,.,.,.,.,.,,.,.,.,.,.,* -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+<script src="maps/datamaps/dist/datamaps.none.min.js"></script>
+
+<div class="col-md-5" id="sdmap" style="min-height: 300px">
 [Map in progress]
 </div>
 
-<div class="col-md-4" id="data">
+<div class="col-md-7" id="data">
 [data in progress]
 </div>
+
+<script>
+// NOTE: LOAD TIMES ARE LONG
+/* 
+
+//WORKING D3 visualization
+var width = 960,
+    height = 1160;
+
+var projection = d3.geo.mercator()
+    .center([-116, 33])
+    .scale(15000)
+    .translate([width / 2, height / 2]);
+    
+
+var path = d3.geo.path()
+    .projection(projection);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+d3.json("maps/sdcounty.topo.json", function(error, sd) {
+if (error) return console.error(error);
+    /*
+  svg.append("path")
+      .datum(topojson.feature(sd, sd.objects.sdcounty))
+      .attr("d", path);
+      //
+      svg.selectAll(".sdcounty")
+    .data(topojson.feature(sd, sd.objects.sdcounty).features)
+  .enter().append("path")
+    .attr("class", function(d) { return "sdcounty " + d.SRA; })
+    .attr("d", path);
+});
+*/
+
+// WORKING DATAMAPS VIZUALIZATION
+    var map = new Datamap({
+    element: document.getElementById('sdmap'),
+    geographyConfig: {
+      dataUrl: 'maps/sdcounty.topo.json'
+    },
+    scope: 'sdcounty',
+    fills: {
+      defaultFill: '#333',
+      someKey: '#333'
+    },
+    data: {
+      '1': {fillKey: 'someKey'},
+      '2': {fillKey: 'someKey'}
+    },
+    setProjection: function(element) {
+
+      var projection = d3.geo.mercator()
+
+        .center([-116.746, 33.004])
+        .scale(15000)
+        .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+
+       var path = d3.geo.path().projection(projection);
+       return {path: path, projection: projection};
+    }
+  });
+</script>
 
