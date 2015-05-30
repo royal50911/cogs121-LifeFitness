@@ -66,7 +66,17 @@ module.exports = function(app, passport) {
 	/* TIps */
 	app.get('/tips', function(req, res) {
 		res.render('tips', {title: 'Tips'});
-	})
+	});
+
+	/* Google maps page */
+	app.get('/googlemaps', function(req, res) {
+		res.render('googlemaps', {title: 'Google Maps'});
+	});
+
+	/* Facebook friends page */
+	app.get('/facebookfriends', function(req, res) {
+		res.render('facebookfriends', {title: 'Facebook Friends'});
+	});
 
 	/* Delphi */ /*
 	app.get('/delphidata', function(req, res){
