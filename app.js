@@ -12,6 +12,9 @@ var passport = require('passport');
 var flash = require('connect-flash');
 var morgan = require('morgan');
 var app = express();
+var pg = require('pg');
+var connectionString = process.env.DATABASE_URL || 'postgres://cogsci_121_4:SD7SdAeD2DpC@delphidata.ucsd.edu:5432/delphibetadb';
+
 
 // local dependencies
 var configDB = require('./config/database.js');
@@ -50,6 +53,28 @@ pg.connect(connectionString, function(err, client, done) {
     
 });
 */
+app.get('/data', function(req, res){
+    pg.connect(connectionString, function(err, client, done) {
+        var results = [];
+        // SQL Query > Select Data
+        var query = client.query("SELECT * FROM hhsa_acute_substance_disorder_by_age_2010_2012 LIMIT 20");
+        // Stream results back one row at a time
+        query.on('row', function(row) {
+            results.push(row);
+        });
+
+        // After all data is returned, close connection and return results
+        query.on('end', function() {
+            client.end();
+            return res.json(results);
+        });
+
+        // Handle Errors
+        if(err) {
+          console.log(err);
+        }
+    });
+});
 
 require('./config/passport')(passport); // pass passport for configuration
 
