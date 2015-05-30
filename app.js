@@ -24,7 +24,8 @@ db.once('open', function (callback) {
   console.log("Database connected succesfully.");
 });
 
-// postgres database (Delphi)
+// postgres database (Delphi) 
+/*
 dotenv.load();
 var pg = require('pg');
 var connectionString = "postgres://" +
@@ -48,6 +49,7 @@ pg.connect(connectionString, function(err, client, done) {
      });
     
 });
+*/
 
 require('./config/passport')(passport); // pass passport for configuration
 

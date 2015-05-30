@@ -56,6 +56,8 @@ module.exports = function(app, passport) {
 		res.redirect('/');
 	});
 
+
+
 	/* Vizualization */
 	app.get('/visualization', function(req, res) {
 		res.render('visualization', {title: 'Vizualization'});
@@ -65,6 +67,66 @@ module.exports = function(app, passport) {
 	app.get('/tips', function(req, res) {
 		res.render('tips', {title: 'Tips'});
 	})
+
+	/* Delphi */ /*
+	app.get('/delphidata', function(req, res){
+		var dotenv = require('dotenv');
+	dotenv.load();
+	var pg = require('pg');
+	var connectionString = "postgres://" +
+                       process.env.DELPHI_USERNAME + ":" +
+                       process.env.DELPHI_PASSWORD +
+                       "@delphidata.ucsd.edu:5432/delphibetadb";
+
+	pg.connect(connectionString, function(err, client, done) {
+    if (err) {
+        return console.error('Error connecting to Delphi: ', err);
+    }
+    
+    client.query('SELECT * FROM hhsa_suicide_by_age_2010_2012 ORDER BY "Death Rate" DESC LIMIT 20;', function(err, result) {
+        done();
+        
+        if (err) {
+            return console.error('PSQL ERR: ', err);
+        }
+        
+        console.log(result);
+     });
+    
+});
+});
+*/
+app.get('/delphidata', function (req, res) {
+	var dotenv = require('dotenv');
+	dotenv.load();
+	var pg = require('pg');
+	var conString = "postgres://" +
+                       process.env.DELPHI_USERNAME + ":" +
+                       process.env.DELPHI_PASSWORD +
+                       "@delphidata.ucsd.edu:5432/delphibetadb";
+
+	pg.connect(conString, function(err, client, done) {
+    if (err) {
+        return console.error('Error connecting to Delphi: ', err);
+    }
+    // initialize connection pool 
+    pg.connect(conString, function(err, client, done) {
+      if(err) return console.log(err);
+      var results = [];
+      var query = client.query('SELECT * FROM hhsa_suicide_by_age_2010_2012 ORDER BY "Death Rate" DESC LIMIT 20');
+     
+      query.on('row', function(row) {
+      	results.push(row);
+      });
+      query.on('end', function() {
+      	client.end();
+      	return res.json(results);
+      });
+      
+    });
+  });
+});
+
 
 	// Simple route middleware to ensure user is authenticated.
 	//   Use this route middleware on any resource that needs to be protected.  If

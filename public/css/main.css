@@ -29,7 +29,7 @@
 
 /* Pushes content of page below navbar */
 body {
-	padding-top: 70px;
+	padding-top: 100px;
 }
 
 
@@ -149,5 +149,9 @@ a:hover {
 
 .back {
 	width: 20px;
+}
+
+.boxthing {
+	border: 1px solid black;
 }
 
