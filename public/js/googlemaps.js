@@ -46,7 +46,7 @@ function setPolygon(data,index) {
           fillOpacity: 0.35
         });
         polygon.setMap(map);
-        var contentString = '<div id="content">'+
+        var contentString = '<div class="infowindow">'+
           '<h1>' + address + '</h1>'+
           '<div>'+
           '<p><b>'+ address + '</b>' +

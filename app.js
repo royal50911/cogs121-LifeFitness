@@ -76,6 +76,10 @@ app.get('/data', function(req, res){
     });
 });
 
+app.get('/',function(req,res){
+  res.render('index');
+});
+
 require('./config/passport')(passport); // pass passport for configuration
 
 // configure application
