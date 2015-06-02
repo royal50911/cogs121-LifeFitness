@@ -2,7 +2,7 @@ module.exports = function(app, passport) {
 
 	/* Home Page */
 	app.get('/', function(req, res) {
-		res.render('index', {
+		res.render('visualization', {
 			title: "Home",
 			user: req.user
 		});
@@ -106,6 +106,7 @@ module.exports = function(app, passport) {
 });
 });
 */
+
 app.get('/delphidata', function (req, res) {
 	var dotenv = require('dotenv');
 	dotenv.load();

@@ -26,6 +26,18 @@
 <!-- *.,.,.,.,.,.,.,.,,.,.,.,.,.,* -->
 <!-- INCLUDE THIS LATER LOCALLY -->
 <!-- *.,.,.,.,.,.,.,.,,.,.,.,.,.,* -->
+<style>
+
+.chart div {
+  font: 13px sans-serif;
+  background-color: magenta;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+</style>
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
 <script src="maps/datamaps/dist/datamaps.none.min.js"></script>
@@ -33,12 +45,103 @@
 
 <script src="js/c3.min.js"></script>
 
-<div class="col-md-5 clearfix boxthing" id="sdmap" style="height: 330px">
+<!-- CONTENT -->
+
+<div class="row">
+<div class="col-sm-4 col-sm-offset-4">
+
+    <h1 class="text-center text-lightest">PlotSD by LifeFitness</h1>
+
+    <!-- LOGIN FORM *NEEDS TO BE CHANGED TO WORK* -->
+    <form action="/signup" method="get">
+        <p>A visualization of San Diego County, based on you, to keep you healthy, informed and safe.</p>
+
+        <br>
+    </form>
+</div>
 </div>
 
-<div class="col-md-7 clearfix boxthing" id="data" style="height: 330px">
-[data in progress]
+
+<!-- secondary nav (above map and data) -->
+<div class="row">
+<div class="col-sm-3 text-center custom-nav">
+  <!-- Single button -->
+<div class="btn-group btn-navbar">
+  <button type="button" class="btn btn-default btn-nav">GENDER</button>
+  <button type="button" class="btn btn-default btn-nav-2 dropdown-toggle" id="gender" data-toggle="dropdown" aria-expanded="false">
+    Male      <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a onClick="test('gender', 'Male'); genderswap('male'); return false;">Male</a></li>
+    <li><a onClick="test('gender', 'Female'); genderswap('female'); return false;">Female</a></li>
+  </ul>
+  </div>
 </div>
+<div class="col-sm-3 text-center custom-nav">
+  <!-- Single button -->
+<div class="btn-group btn-navbar">
+  <button type="button" class="btn btn-default btn-nav">AGE</button>
+  <button type="button" class="btn btn-default btn-nav-2 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+   <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">18-25</a></li>
+    <li><a href="#">26-33</a></li>
+    <li><a href="#">34-42</a></li>
+  </ul>
+  </div>
+</div>
+<div class="col-sm-3 text-center custom-nav">
+  <!-- Single button -->
+<div class="btn-group btn-navbar">
+  <button type="button" class="btn btn-default btn-nav">ETHNICITY</button>
+  <button type="button" class="btn btn-default btn-nav-2 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+   <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Asian American</a></li>
+    <li><a href="#">African American</a></li>
+    <li><a href="#">Hispanic or Latino</a></li>
+    <li><a href="#">Native Hawaiian and other Pacific Islander</a></li>
+    <li><a href="#">Native American</a></li>
+    <li><a href="#">Caucasian</a></li>
+  </ul>
+  </div>
+</div>
+
+<div class="col-sm-3 text-center custom-nav">
+  <!-- Single button -->
+<div class="btn-group btn-navbar">
+  <button type="button" class="btn btn-default btn-nav">4th label</button>
+  <button type="button" class="btn btn-default btn-nav-2 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+   <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+  </div>
+</div>
+</div>
+
+<div class="col-md-5 boxthing" id="sdmap" style="height: 330px">
+</div>
+
+<div class="col-md-7 boxthing" id="data" style="height: 330px">
+[data in progress]
+  <div id="chart2">
+  </div>
+</div>
+
+<div class="col-md-12" style="">
+
+<h4 id="neighborhood"></h4>
+<div class="chart">demo data</div>
+</div>
+
 
 <script>
 // NOTE: LOAD TIMES ARE LONG
@@ -76,32 +179,16 @@ if (error) return console.error(error);
 });
 */
 
+// test with buttons
+function test(label, field) {
+  var element = document.getElementById(label);
+  //console.log("chosen: " + field);
+  element.innerHTML = field;
+}
+
 // WORKING DATAMAPS VIZUALIZATION
-    var map = new Datamap({
-    element: document.getElementById('sdmap'),
-    geographyConfig: {
-      dataUrl: 'maps/sdcounty.topo.json'
-    },
-    scope: 'sdcounty',
-    fills: {
-      defaultFill: '#333',
-      someKey: '#333'
-    },
-    data: {
-      '1': {fillKey: 'someKey'},
-      '2': {fillKey: 'someKey'}
-    },
-    setProjection: function(element) {
 
-      var projection = d3.geo.mercator()
-
-        .center([-116.746, 33.004])
-        .scale(15000)
-        .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
-
-       var path = d3.geo.path().projection(projection);
-       return {path: path, projection: projection};
-    }
-  });
 </script>
-
+<script src="js/sdcountymap.js"></script>
+<script src="js/c3vis.js"></script>
+<script src="js/demodata.js"></script>
