@@ -1,19 +1,32 @@
 // Create the Google Map…
 var map;
 var geocoder;
+var clicked = "";
 
 function initialize() {
   geocoder = new google.maps.Geocoder(); 
-  map = new google.maps.Map(document.getElementById("map"), {
+  map = new google.maps.Map(document.getElementById("googleMap"), {
     zoom: 8,
-    center: new google.maps.LatLng(32.75749,-117.2458),
+    center: new google.maps.LatLng(32.95749,-116.9058),
     mapTypeId: google.maps.MapTypeId.TERRAIN
   });
 }
 
 d3.json("maps/sdcounty.json", function(data) {
-  setPolygon(data.features,0);
+  if (displaySideBar(data.features))
+    setPolygon(data.features,0);
 });
+
+function displaySideBar(data) {
+  data =  data.sort(function(a,b){
+    return (a.properties.NAME > b.properties.NAME) ? 1 : ((a.properties.NAME < b.properties.NAME) ? -1 : 0);
+  });
+  for (var i in data) {
+    var name = data[i].properties.NAME
+    $('#sidebar').append("<div class='sidebarOption' id='side"+i+"' >"+name+"</div>");
+  } 
+  return true;
+}
 
 function setPolygon(data,index) {
   if (index < data.length) {
@@ -43,14 +56,19 @@ function setPolygon(data,index) {
           content: contentString
         });
         google.maps.event.addListener(polygon, 'click', function(event) {
+          $(clicked).css("background-color", "");
+          $("#side"+index).css("background-color", "green");
+          clicked ="#side"+index;
           infowindow.setPosition(event.latLng);   
           infowindow.open(map,polygon);
+          selectArea(address);
+          //TODO: click event
         });
         google.maps.event.addListener(polygon, 'mouseover', function() {
-          //infowindow.open(map,polygon);
+          //TODO: mouseover event
         });
         google.maps.event.addListener(polygon, 'mouseout', function() {
-          //infowindow.close();
+          infowindow.close();
         });
     setPolygon(data,index+1); 
   }
@@ -58,10 +76,32 @@ function setPolygon(data,index) {
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
+function selectArea(address) {
+  $.getJSON( '/data')
+    .done(function( data ) {
+      $.getJSON( 'maps/areaXY.json')
+        .done(function( area ){
+          var num = 0;
+          for (var i in data) {
+            if (area[data[i].Geography] == address) {
+              console.log(data[i]["Emergency Department Discharge No."]);
+              if (!data[i]["Emergency Department Discharge No."]){
+                num += 0;
+              } else if (data[i]["Emergency Department Discharge No."] == "<5") {
+                num += 5;
+              } else {
+                num += parseInt(data[i]["Emergency Department Discharge No."]);
+              }
+            } 
+          }
+          $("#selectArea").html(num);
+      });
+  });
+}
+
 (function() {
   $.getJSON( '/data')
     .done(function( data ) {
-      console.log(data);
       var hosp = data.map(function(item){
         var num = item["Emergency Department Discharge No."];
         if (num == null) {
