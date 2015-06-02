@@ -61,7 +61,7 @@ function setPolygon(data,index) {
           clicked ="#side"+index;
           infowindow.setPosition(event.latLng);   
           infowindow.open(map,polygon);
-          selectArea(address);
+          //selectArea(address);
           //TODO: click event
         });
         google.maps.event.addListener(polygon, 'mouseover', function() {
@@ -124,4 +124,97 @@ function selectArea(address) {
     });
 })();
 
+$(document).ready(function() {
+    var options = {
+        enableGestures: true
+    };
+var controller = Leap.loop({enableGestures: true}, function(frame){
+  if(frame.valid && frame.gestures.length > 0){
+    frame.gestures.forEach(function(gesture){
+        switch (gesture.type){
+          case "circle":
+              if(gesture.state == "stop")
+              {
+                console.log();
+                map.setZoom(map.getZoom()-1);
+                console.log("Circle Gesture");
+              }
+                
+              break;
+          case "keyTap":
+              console.log("Key Tap Gesture");
+              break;
+          case "screenTap":
+             if(gesture.state == "stop") {
+              console.log(gesture.duration);
+              map.setZoom(map.getZoom()+1);
+              console.log(map.getZoom());
+              console.log("screenTap");
+             }
+              break;
+          case "swipe":
+             var isHorizontal = Math.abs(gesture.direction[0]) > Math.abs(gesture.direction[1]);
+            //Classify as right-left or up-down
+            if(gesture.state == "stop") {
+            if(isHorizontal){
+              if(gesture.duration > 150000) {
+              if(gesture.direction[0] > 0){
+                  console.log("right");
+                  console.log(gesture.duration);
+                  if(map.getZoom() < 10)
+                    map.setCenter(new google.maps.LatLng(map.getCenter().A,map.getCenter().F-0.5));
+                  else
+                    map.setCenter(new google.maps.LatLng(map.getCenter().A,map.getCenter().F-0.05));
+                  
+              } else {
+                  
+                  console.log("left");
+                  console.log(gesture.duration);
+                  if(map.getZoom() < 10)
+                    map.setCenter(new google.maps.LatLng(map.getCenter().A,map.getCenter().F+0.5));
+                  else
+                    map.setCenter(new google.maps.LatLng(map.getCenter().A,map.getCenter().F+0.05));
+              }
+             }
+            } else { //vertical
+              if(gesture.duration > 65000) {
+              if(gesture.direction[1] > 0){
+                  console.log("up");
+                  console.log(gesture.duration);
+                  if(map.getZoom() < 9)
+                    map.setCenter(new google.maps.LatLng(map.getCenter().A - 0.5,map.getCenter().F));
+                  else
+                    map.setCenter(new google.maps.LatLng(map.getCenter().A - 0.04,map.getCenter().F));
+              } else {
+                  console.log("down");
+                  console.log(gesture.duration);
+                  if(map.getZoom() < 9)
+                    map.setCenter(new google.maps.LatLng(map.getCenter().A + 0.5,map.getCenter().F));
+                  else
+                    map.setCenter(new google.maps.LatLng(map.getCenter().A + 0.04,map.getCenter().F));
+              }                  
+            }
+            }
+              }
+              break;
+        }
+    });
+  }
+});
+    var controller = Leap.loop(options, function(frame) {
+        if (frame.hands.length > 0) {
+            var hand = frame.hands[0];
+            if (hand.grabStrength > 0.9) {
+                //positions = hand.screenPosition();
+                //map.setZoom(positions[2]);
+                //map.setCenter(marker.getPosition());
+                //console.log(hand.screenPosition());
+                //map.panBy(x:number, y:number)
+                //console.log(map.getCenter());
+            }
+        }
+    }).use('screenPosition', {
+        scale: 0.75
+    });
+});
 
