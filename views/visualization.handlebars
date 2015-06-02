@@ -28,6 +28,7 @@
 <!-- *.,.,.,.,.,.,.,.,,.,.,.,.,.,* -->
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+<script src="js/jquery-2.1.4.min.js"></script>
 <script src="maps/datamaps/dist/datamaps.none.min.js"></script>
 <!-- -->
 
@@ -79,6 +80,18 @@ if (error) return console.error(error);
 // WORKING DATAMAPS VIZUALIZATION
     var map = new Datamap({
     element: document.getElementById('sdmap'),
+    
+    // On-click behavior
+    done: function(datamap) {
+      datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+          console.log(geography.properties.name);
+          
+          $.get('/delphidata', function (data) {
+            console.log(data);
+          });
+      });
+    },
+    
     geographyConfig: {
       dataUrl: 'maps/sdcounty.topo.json'
     },
