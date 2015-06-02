@@ -57,7 +57,7 @@ app.get('/data', function(req, res){
     pg.connect(connectionString, function(err, client, done) {
         var results = [];
         // SQL Query > Select Data
-        var query = client.query("SELECT * FROM hhsa_acute_substance_disorder_by_age_2010_2012 LIMIT 20");
+        var query = client.query("SELECT * FROM hhsa_acute_substance_disorder_by_age_2010_2012");
         // Stream results back one row at a time
         query.on('row', function(row) {
             results.push(row);
