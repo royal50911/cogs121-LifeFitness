@@ -12,21 +12,21 @@
     <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="dataset" data-toggle="dropdown" aria-expanded="false">{{dataset}} <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <li><a onClick="">Alcohol Vehicular Injuries</a></li>
-      <li><a onClick="">Total Vehicular Injuries</a></li>
-      <li><a onClick="">AIDS and HIV</a></li>
-      <li><a onClick="">Anxiety Disorder</a></li>
-      <li><a onClick="">Assults</a></li>
-      <li><a onClick="">Asthma</a></li>
-      <li><a onClick="">Alcohol Related Disorder</a></li>
-      <li><a onClick="">Substance Related Disorder</a></li>
-      <li><a onClick="">Firearm Injuries</a></li>
-      <li><a onClick="">Homicide</a></li>
-      <li><a onClick="">Lung Cancer</a></li>
-      <li><a onClick="">Pedestrian Injuries</a></li>
-      <li><a onClick="">Personality Disorders</a></li>
-      <li><a onClick="">Self Injury</a></li>
-      <li><a onClick="">Suicide</a></li>
+      <li><a onClick="datasetAlcoholInjury()">Alcohol Vehicular Injuries</a></li>
+      <li><a onClick="datasetTotalInjury()">Total Vehicular Injuries</a></li>
+      <li><a onClick="datasetAIDS()">AIDS and HIV</a></li>
+      <li><a onClick="datasetAnxiety()">Anxiety Disorder</a></li>
+      <li><a onClick="datasetAssults()">Assults</a></li>
+      <li><a onClick="datasetAsthma()">Asthma</a></li>
+      <li><a onClick="datasetAlcohol()">Alcohol Related Disorder</a></li>
+      <li><a onClick="datasetSubstance()">Substance Related Disorder</a></li>
+      <li><a onClick="datasetFirearm()">Firearm Injuries</a></li>
+      <li><a onClick="datasetHomicide()">Homicide</a></li>
+      <li><a onClick="datasetLungCancer()">Lung Cancer</a></li>
+      <li><a onClick="datasetPedestrian()">Pedestrian Injuries</a></li>
+      <li><a onClick="datasetPersonality()">Personality Disorders</a></li>
+      <li><a onClick="datasetSelfInjury()">Self Injury</a></li>
+      <li><a onClick="datasetSuicide()">Suicide</a></li>
     </ul>
     </div>
   </div>
@@ -91,16 +91,78 @@
 
 <div id="sidebar" style="margin-top:10%"></div>
 -->
+<div class="container">
 <h4 class="text-lightest">Number of Times More Likely Than SD County Average</h4>
 <h5 class="text-lightest">by Gender</h5>
 <div id="genderchart"></div>
 <h5 class="text-lightest">by Age</h5>
 <div id="agechart"></div>
+</div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript" src="js/googlemaps.js"></script>
 <script>
+function datasetAlcoholInjury() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Alcohol Vehicular Injuries  <span class="caret"></span>';
+}
+function datasetTotalInjury() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Total Vehicular Injuries  <span class="caret"></span>';
+}
+function datasetAIDS() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'AIDS and HIV  <span class="caret"></span>';
+}
+function datasetAnxiety(){
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Anxiety Disorder <span class="caret"></span>';
+}
+function datasetAssults(){
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Assults  <span class="caret"></span>';
+}
+function datasetAsthma() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Asthma  <span class="caret"></span>';
+}
+function datasetAlcohol() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Alcohol Related Disorder  <span class="caret"></span>';
+}
+function datasetSubstance() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Substance Related Disorder  <span class="caret"></span>';
+}
+function datasetFirearm() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Firearm Injuries  <span class="caret"></span>';
+}
+function datasetHomicide() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Homicide  <span class="caret"></span>';
+}
+function datasetLungCancer() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Lung Cancer <span class="caret"></span>';
+}
+function datasetPedestrian() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Pedestrian Injuries <span class="caret"></span>';
+}
+function datasetPersonality() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Personality Disorder <span class="caret"></span>';
+}
+function datasetSelfInjury() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Self Injury  <span class="caret"></span>';
+}
+function datsetSuicide() {
+  var element = document.getElementById('dataset');
+  element.innerHTML = 'Suicide <span class="caret"></span>';
+}
 function filterMale() {
   console.log("male selected");
   var element = document.getElementById('gender');
