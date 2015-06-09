@@ -7,9 +7,9 @@
    <!-- Dataset -->
   <div class="col-sm-3">
   <!-- Single button -->
-  <div class="btn-group btn-navbar">
+  <div class="btn-group btn-navbar" onload="setUp()">
     <button type="button" class="btn btn-default btn-nav-label disabled" disabled>DATASET</button>
-    <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="dataset" data-toggle="dropdown" aria-expanded="false"> <span class="caret"></span>
+    <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="dataset" data-toggle="dropdown" aria-expanded="false">{{dataset}} <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
       <li><a onClick="filter0To14()">0 - 14</a></li>
@@ -27,7 +27,7 @@
   <!-- Single button -->
   <div class="btn-group btn-navbar">
     <button type="button" class="btn btn-default btn-nav-label disabled" disabled>GENDER</button>
-    <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="gender" data-toggle="dropdown" aria-expanded="false"> <span class="caret"></span>
+    <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="gender" data-toggle="dropdown" aria-expanded="false">{{gender}} <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
       <li><a onClick="filterMale()">Male</a></li>
@@ -40,7 +40,7 @@
 
   <div class="btn-group btn-navbar">
     <button type="button" class="btn btn-default btn-nav-label disabled" disabled>AGE</button>
-    <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="age" data-toggle="dropdown" aria-expanded="false">  <span class="caret"></span>
+    <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="age" data-toggle="dropdown" aria-expanded="false">{{age}} <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
       <li><a onClick="filter0To14()">0 - 14</a></li>
@@ -144,6 +144,7 @@ function clearAll() {
   clearAge();
   clearLocation();
 }
+
 </script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="js/d3data.js"></script>

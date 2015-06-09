@@ -21,10 +21,12 @@ function displaySideBar(data) {
   data =  data.sort(function(a,b){
     return (a.properties.NAME > b.properties.NAME) ? 1 : ((a.properties.NAME < b.properties.NAME) ? -1 : 0);
   });
+  /*
   for (var i in data) {
     var name = data[i].properties.NAME
     $('#sidebar').append("<div class='sidebarOption' id='side"+i+"' >"+name+"</div>");
   } 
+  */
   return true;
 }
 

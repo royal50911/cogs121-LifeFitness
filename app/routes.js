@@ -69,8 +69,14 @@ module.exports = function(app, passport) {
 	});
 
 	/* Google maps page */
-	app.get('/googlemaps', function(req, res) {
-		res.render('googlemaps', {title: 'Google Maps'});
+	app.post('/googlemaps', function(req, res) {
+		var dataset =req.body.dataset;
+		var gender = req.body.gender;
+		var age = req.body.age;
+		console.log(dataset);
+		console.log(gender);
+		console.log(age);
+		res.render('googlemaps', {title: 'Google Maps', dataset: dataset, age: age, gender: gender});
 	});
 
 	/* Facebook friends page */
