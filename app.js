@@ -20,14 +20,12 @@ var connectionString = process.env.DATABASE_URL || 'postgres://cogsci_121_4:SD7S
 var configDB = require('./config/database.js');
 
 // database connection
-/*
 mongoose.connect(configDB.url);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
   console.log("Database connected succesfully.");
 });
-*/
 
 // postgres database (Delphi) 
 /*
