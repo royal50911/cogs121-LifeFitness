@@ -416,7 +416,7 @@ function setPolygon(data,index) {
         });
         polygon.setMap(map);
         var contentString = '<div class="infowindow">'+
-          '<h1>' + address + '</h1>'+
+          '<h2>' + address + '</h2>'+
           '<div>'+
           '<p><b>'+ "Number of Times More Likely Than SD County Average: " + regionValue + '</b>' +
           '</div>'+
