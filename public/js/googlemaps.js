@@ -19,13 +19,19 @@ var genderSelected = "male";
 var ageSelected = "ages0-14";
 var ageBar = "#ageNULL";
 var genderBar = "#genderNULL";
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong></strong> <span style='color:red'>" + d.num + "</span>";
+  });
 
 function initialize() {
   geocoder = new google.maps.Geocoder(); 
   map = new google.maps.Map(document.getElementById("googleMap"), {
-    zoom: 8,
+    zoom: 9,
     center: new google.maps.LatLng(32.95749,-116.9058),
-    mapTypeId: google.maps.MapTypeId.TERRAIN
+    mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 }
 
@@ -174,6 +180,8 @@ function loadD3Age() {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    svg.call(tip);
+
     //set domain of x to be all the usernames contained in the data
     scaleX.domain(d3set.map(function(d) { return d.region; }));
     //set domain of y to be from 0 to the maximum media count returned
@@ -213,6 +221,8 @@ function loadD3Age() {
       .attr("id", function(d) { return "age"+d.region.replace(/\s+/g, ''); })
       .attr("fill", "steelblue")
       .attr("height", function(d) { return height - scaleY(d.num); })
+      .on("mouseover",tip.show)
+      .on("mouseout",tip.hide);
 }
 
 function loadD3Gender() {
@@ -323,6 +333,8 @@ function loadD3Gender() {
     //set domain of y to be from 0 to the maximum media count returned
     scaleY.domain([0, d3.max(d3set, function(d) { return d.num; })]);
 
+    svg.call(tip);
+
     //set up x axis
     svg.append("g")
       .attr("class", "x axis")
@@ -357,6 +369,8 @@ function loadD3Gender() {
       .attr("id", function(d) { return "gender"+d.region.replace(/\s+/g, ''); })
       .attr("fill", "steelblue")
       .attr("height", function(d) { return height - scaleY(d.num); })
+      .on("mouseover",tip.show)
+      .on("mouseout",tip.hide);
 }
 
 function changeColor() {
@@ -377,7 +391,9 @@ function setPolygon(data,index) {
         if (indexOfAddress >= 0 ) {
           regionValue = datasetPicked[indexOfAddress];
         }
-        if (regionValue <= value_level_4) {
+        if (regionValue == 0) {
+          color = "#FFFFFF";
+        } else if (regionValue <= value_level_4) {
           color = color_level_4;
         } else if (regionValue <= value_level_3) {
           color = color_level_3;
