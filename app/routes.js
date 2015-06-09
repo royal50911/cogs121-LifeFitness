@@ -2,7 +2,7 @@ module.exports = function(app, passport) {
 
 	/* Home Page */
 	app.get('/', function(req, res) {
-		res.render('visualization', {
+		res.render('index', {
 			title: "Home",
 			user: req.user
 		});

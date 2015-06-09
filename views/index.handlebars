@@ -1,38 +1,158 @@
-<!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand text-uppercase" href="/">PlotSD</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right"><!--
-            <li><a href="/signup" class="text-uppercase">Sign Up</a></li>
-            <li><a href="/login" class="text-uppercase">Log In <span class="sr-only">(current)</span></a></li> -->
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+<div class="container-fluid" style="min-height: 800px;">
+    <div class="img-container">
 
-    <div class="col-sm-4 col-sm-offset-4">
+        <img src="sdpic.jpg" class=" img-custom">
 
-    <h1 class="text-center text-lightest">PlotSD by LifeFitness</h1>
+        <div class="container" style="padding-top: 200px">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
 
-    <!-- show any messages that come back with authentication -->
-    {{#if message}}
-        <div class="alert alert-danger">{{message}}</div>
-    {{/if}}
-    <!-- LOGIN FORM *NEEDS TO BE CHANGED TO WORK* -->
-    <form action="/signup" method="get">
-        <p>A visualization of San Diego County, based on you, to keep you healthy, informed and safe.</p>
+            <h1 class="text-center text-lightest">PlotSD by LifeFitness</h1>
+    
 
-        <button type="submit" class="btn btn-default btn-submit text-uppercase">GET STARTED</button>
-    </form>
-</div>
+            <p>A visualization of San Diego County, based on you, to keep you healthy, informed and safe.</p>
 
     
+            <a href="#form"><button class="btn btn-default btn-submit text-uppercase">GET STARTED</button></a> 
+            </div>
+        </div>
+        </div>
+
+
+
+    </div>
+
+</div>
+
+
+<div class="container-fluid" style="min-height: 800px; background-color: #333; opacity: 0.9" id="form">
+
+    <div class="row">
+    <div class="col-sm-12">
+
+    <h2 class="text-center text-lightest">What Interests You?</h2>
+
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-sm-4 col-sm-offset-1">
+    <h3 class="text-lighter text-center">Choose a Dataset</h3>
+ 
+    <!-- LOGIN FORM *NEEDS TO BE CHANGED TO WORK* -->
+    <form action="/googlemaps" method="post">
+        
+        <div class="form-group">
+            
+            <input type="radio" name="datset" value="alcohol-injury">
+            <label class="text-lighter">Vehicular Injuries (Alcohol Related)</label>
+            <br>
+            <input type="radio" name="dataset" value="total-injury">
+            <label class="text-lighter">Vehicular Injuries (Total)</label>
+            <br>
+            <input type="radio" name="dataset" value="aids-hiv">
+            <label class="text-lighter">AIDS and HIV</label>
+            <br>
+            <input type="radio" name="dataset" value="anxiety">
+            <label class="text-lighter">Anxiety Disorder</label>
+            <br>
+            <input type="radio" name="dataset" value="assult">
+            <label class="text-lighter">Assaults</label>
+             <br>
+
+            <input type="radio" name="dataset" value="asthma">
+            <label class="text-lighter">Asthma</label>
+             <br>
+            <input type="radio" name="dataset" value="alcoholism">
+            <label class="text-lighter">Chronic Alcohol Related Disorder</label>
+             <br>
+            <input type="radio" name="dataset" value="substance">
+            <label class="text-lighter">Chronic Substance Related Disorder</label>
+             <br>
+            <input type="radio" name="dataset" value="firearm">
+            <label class="text-lighter">Firearm Related Injuries</label>
+            <br>
+            <input type="radio" name="dataset" value="homicide">
+            <label class="text-lighter">Homicide</label>
+            <br>
+           
+            <input type="radio" name="dataset" value="lung-cancer">
+            <label class="text-lighter">Lung Cancer</label>
+            <br>
+            <input type="radio" name="dataset" value="pedestrian-injuries">
+            <label class="text-lighter">Pedestrian Injuries</label>
+            <br>
+            <input type="radio" name="dataset" value="personality-disorders">
+            <label class="text-lighter">Personality Disorders</label>
+            <br>
+            <input type="radio" name="dataset" value="self-injury">
+            <label class="text-lighter">Self-Inflicted Injuries</label>
+            <br>
+            <input type="radio" name="dataset" value="suicide">
+            <label class="text-lighter">Suicide</label>
+           
+
+        
+        </div>
+        </div>
+        <div class="col-sm-3">
+        <div class="form-group">
+            <h3 class="text-lighter">Gender</h3>
+            <input type="radio" name="gender" value="male">
+            <label class="text-lighter" required>Male</label>
+            <br>
+            <input type="radio" name="gender" value="female">
+            <label class="text-lighter">Female</label>
+        </div>
+        </div>
+
+        <div class="col-sm-3">
+        <div class="form-group">
+            <h3 class="text-lighter">Age</h3>
+            <input type="radio" name="age" value="0-14">
+            <label class="text-lighter">0 - 14</label>
+            <br>
+            <input type="radio" name="age" value="15-24">
+            <label class="text-lighter">15-24</label>
+            <br>
+            <input type="radio" name="age" value="25-44">
+            <label class="text-lighter">25-44</label>
+            <br>
+            <input type="radio" name="age" value="45-64">
+            <label class="text-lighter">45-64</label>
+            <br>
+            <input type="radio" name="age" value="65+">
+            <label class="text-lighter">65 +</label>
+        </div>
+        </div>
+ </div>
+
+        <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+        <button type="submit" class="btn btn-default btn-submit text-uppercase">EXPLORE THE DATA</button>
+        </div>
+        </div>
+    </form>
+<br><br>
+</div>
+
+</div>
+
+<script>
+jQuery('a').each( function() {
+    var $this = jQuery(this), 
+        target = this.hash;
+    jQuery(this).click(function (e) { 
+        e.preventDefault();
+        if( $this.length > 0 ) {
+            if($this.attr('href') == '#' ) {
+                // Do nothing   
+            } else {
+               jQuery('html, body').animate({ 
+                    scrollTop: (jQuery(target).offset().top) 
+                }, 500);
+            }  
+        }
+    });
+});  
+</script>

@@ -61,6 +61,9 @@ function setPolygon(data,index) {
           clicked ="#side"+index;
           infowindow.setPosition(event.latLng);   
           infowindow.open(map,polygon);
+          var element = document.getElementById('location');
+
+          element.innerHTML = address;
           //selectArea(address);
           //TODO: click event
         });
@@ -98,7 +101,7 @@ function selectArea(address) {
       });
   });
 }
-
+/*
 (function() {
   $.getJSON( '/data')
     .done(function( data ) {
@@ -122,7 +125,8 @@ function selectArea(address) {
         },
       });
     });
-})();
+})(); 
+*/
 
 $(document).ready(function() {
     var options = {

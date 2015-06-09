@@ -7,6 +7,24 @@
 	font-weight: 100;
 }
 
+div.img-container {
+z-index: -1000;
+height: 100%;
+margin-top: -90px;
+}
+.img-custom {
+	max-height: 110%;
+	width: 100%;
+	position:fixed;
+	z-index: -999;
+}
+
+.text-right {
+	text-align: right;
+}
+
+
+/* GOOGLE MAPS STUFF */
 .sidebarOption {
 	width:100%;
 	border:1px solid #000;
@@ -19,9 +37,6 @@
   padding: 0;
 }
 
-.infowindow {
-	color: #000000;
-}
 
 body {
 	background-color: #5A5A5A;
@@ -30,6 +45,10 @@ body {
 
 body #sdmap {
 	color: #333;
+}
+
+body #chart {
+	color: black;
 }
 
 #sidebar {
@@ -53,15 +72,15 @@ body #sdmap {
 /* -- Bootstrap Navbar Edits -- */
 /* Sets height of navbar and it's elements */
 .navbar-brand, .navbar-nav li a {
-	height: 70px;
-	line-height: 70px;
+	height: 50px;
+	line-height: 50px;
 	padding-top: 0;
 	font-weight: 400;
 }
 
 /* Pushes content of page below navbar */
 body {
-	padding-top: 100px;
+	padding-top: 50px;
 }
 
 
@@ -135,25 +154,20 @@ a:hover {
     color: #E5745D;
 }
 
+#new-nav {
+	background-color: white;
+	height: 40px;
+	color: black;
+
+}
+
 /* -- BUTTONS -- */
 .btn-submit {
 	width: 100%;
 }
 
-.btn-nav {
-	width: 50%
-}
-.btn-nav-2 {
-	width: 50%;
-}
-.dropdown-menu {
-	width: 100%;
-}
-.btn-navbar {
-	width: 100%;
-	padding: 0;
-	margin: 0;
-}
+
+
 .btn-default {
 	background-color: #6699FF;
 	border-color: #6699FF;
@@ -200,6 +214,61 @@ a:hover {
 .boxthing {
 	border: 1px solid black;
 }
+
+.btn-navbar {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	height: 50px;
+	background-color: white;
+}
+
+p.nav.nav-text {
+	height: 50px;
+	padding: 0;
+	margin-top: 0px;
+}
+
+.btn-nav {
+	height: 100%;
+	background-color: white;
+	border: none;
+	color: black;
+	font-weight: 300;
+
+}
+.btn-nav:hover {
+	border: none;
+	background-color: white;
+	color: #62D8D8;
+}
+.btn-nav:focus {
+	border: none;
+	background-color: white;
+	color: #62D8D8;
+}
+.btn-nav-label {
+
+	height: 100%;
+	text-align: right;
+	font-weight: 300;
+}
+
+
+.disabled {
+	color: black;
+	border: none;
+}
+.custom-nav {
+	padding: 0;
+	background-color: white;
+}
+
+
+
+.dropdown-menu {
+	width: 100%;
+} 
 /*
 .custom-nav {
 	padding: 0;
@@ -208,3 +277,4 @@ a:hover {
 	background-color: white;
 	padding: 0;
 }
+
