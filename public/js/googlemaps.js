@@ -30,7 +30,7 @@ function initialize() {
   geocoder = new google.maps.Geocoder(); 
   map = new google.maps.Map(document.getElementById("googleMap"), {
     zoom: 9,
-    center: new google.maps.LatLng(32.95749,-116.9058),
+    center: new google.maps.LatLng(32.99749,-116.9058),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
 }
