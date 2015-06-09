@@ -19,6 +19,7 @@ var genderSelected = "male";
 var ageSelected = "ages0-14";
 var ageBar = "#ageNULL";
 var genderBar = "#genderNULL";
+var leap;
 var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
@@ -594,6 +595,8 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
         if (frame.hands.length > 0) {
             var hand = frame.hands[0];
             if (hand.grabStrength > 0.9) {
+              leap = 1;
+
                 //positions = hand.screenPosition();
                 //map.setZoom(positions[2]);
                 //map.setCenter(marker.getPosition());
@@ -601,6 +604,14 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
                 //map.panBy(x:number, y:number)
                 //console.log(map.getCenter());
             }
+            if (hand.grabStrength <0.1&&leap ==1) 
+              {
+                leap = 0;
+                var marker = new google.maps.Marker({
+                  position: map.getCenter(),
+                  map: map,
+                });
+              }
         }
     }).use('screenPosition', {
         scale: 0.75
