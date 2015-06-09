@@ -14,7 +14,6 @@
     <ul class="dropdown-menu" role="menu">
       <li><a onClick="datasetAlcoholInjury()">Alcohol Vehicular Injuries</a></li>
       <li><a onClick="datasetTotalInjury()">Total Vehicular Injuries</a></li>
-      <li><a onClick="datasetAIDS()">AIDS and HIV</a></li>
       <li><a onClick="datasetAnxiety()">Anxiety Disorder</a></li>
       <li><a onClick="datasetAssults()">Assults</a></li>
       <li><a onClick="datasetAsthma()">Asthma</a></li>
@@ -23,10 +22,7 @@
       <li><a onClick="datasetFirearm()">Firearm Injuries</a></li>
       <li><a onClick="datasetHomicide()">Homicide</a></li>
       <li><a onClick="datasetLungCancer()">Lung Cancer</a></li>
-      <li><a onClick="datasetPedestrian()">Pedestrian Injuries</a></li>
-      <li><a onClick="datasetPersonality()">Personality Disorders</a></li>
       <li><a onClick="datasetSelfInjury()">Self Injury</a></li>
-      <li><a onClick="datasetSuicide()">Suicide</a></li>
     </ul>
     </div>
   </div>
@@ -88,13 +84,13 @@
 <div id="selectArea"></div>
 <!--
 <div style="width:60%;height:400px;margin-left:20%;" id="chart"></div>
-
-<div id="sidebar" style="margin-top:10%"></div>
 -->
 <div class="container">
 <h4 class="text-lightest">Number of Times More Likely Than SD County Average</h4>
 <h5 class="text-lightest">by Gender</h5>
-<div id="genderchart"></div>
+<div style="height:30%">
+  <div id="genderchart"></div>
+</div>
 <h5 class="text-lightest">by Age</h5>
 <div id="agechart"></div>
 </div>
@@ -102,126 +98,5 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript" src="js/googlemaps.js"></script>
-<script>
-function datasetAlcoholInjury() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Alcohol Vehicular Injuries  <span class="caret"></span>';
-}
-function datasetTotalInjury() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Total Vehicular Injuries  <span class="caret"></span>';
-}
-function datasetAIDS() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'AIDS and HIV  <span class="caret"></span>';
-}
-function datasetAnxiety(){
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Anxiety Disorder <span class="caret"></span>';
-}
-function datasetAssults(){
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Assults  <span class="caret"></span>';
-}
-function datasetAsthma() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Asthma  <span class="caret"></span>';
-}
-function datasetAlcohol() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Alcohol Related Disorder  <span class="caret"></span>';
-}
-function datasetSubstance() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Substance Related Disorder  <span class="caret"></span>';
-}
-function datasetFirearm() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Firearm Injuries  <span class="caret"></span>';
-}
-function datasetHomicide() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Homicide  <span class="caret"></span>';
-}
-function datasetLungCancer() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Lung Cancer <span class="caret"></span>';
-}
-function datasetPedestrian() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Pedestrian Injuries <span class="caret"></span>';
-}
-function datasetPersonality() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Personality Disorder <span class="caret"></span>';
-}
-function datasetSelfInjury() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Self Injury  <span class="caret"></span>';
-}
-function datsetSuicide() {
-  var element = document.getElementById('dataset');
-  element.innerHTML = 'Suicide <span class="caret"></span>';
-}
-function filterMale() {
-  console.log("male selected");
-  var element = document.getElementById('gender');
-  element.innerHTML = 'Male  <span class="caret"></span>';
-}
-function filterFemale() {
-  console.log("female selected");
-  var element = document.getElementById('gender');
-  element.innerHTML = 'Female <span class="caret"></span>';
-}
-function clearGender() {
-  console.log("gender filter cleared");
-  var element = document.getElementById('gender');
-  element.innerHTML = '<span class="caret"></span>';
-}
-function filter0To14() {
-  console.log("0-14 selected");
-  var element = document.getElementById('age');
-  element.innerHTML = '0 - 14 <span class="caret"></span>';
-}
-function filter15To24() {
-  console.log("15-24 selected");
-  var element = document.getElementById('age');
-  element.innerHTML = '15 - 24 <span class="caret"></span>';
-}
-function filter25To44() {
-  console.log("25-44 selected");
-  var element = document.getElementById('age');
-  element.innerHTML = '25 - 44  <span class="caret"></span>';
-}
-function filter45To64() {
-  console.log("45-64 selected");
-  var element = document.getElementById('age');
-  element.innerHTML = '45 - 64  <span class="caret"></span>';
-}
-function filter65() {
-  console.log("65+ selected");
-  var element = document.getElementById('age');
-  element.innerHTML = '65 +  <span class="caret"></span>';
-}
-function clearAge() {
-  console.log("age filter cleared");
-  var element = document.getElementById('age');
-  element.innerHTML = '<span class="caret"></span>';
-}
-function clearLocation() {
-  console.log("location filter cleared");
-  var element = document.getElementById('location');
-  element.innerHTML = '(click on map)';
-}
-
-function clearAll() {
-  console.log("all filters cleared");
-  clearGender();
-  clearAge();
-  clearLocation();
-}
-
-</script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="js/d3data.js"></script>
 
