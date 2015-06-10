@@ -79,6 +79,11 @@ module.exports = function(app, passport) {
 		res.render('googlemaps', {title: 'Google Maps', dataset: dataset, age: age, gender: gender});
 	});
 
+	app.get('/googlemaps', function(req, res) {
+		res.redirect('/');
+	});
+
+
 	/* Facebook friends page */
 	app.get('/facebookfriends', function(req, res) {
 		res.render('facebookfriends', {title: 'Facebook Friends'});

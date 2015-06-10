@@ -418,10 +418,13 @@ function setPolygon(data,index) {
         polygon.setMap(map);
         var contentString = '<div class="infowindow">'+
           '<h2>' + address + '</h2>'+
-          '<div>'+
-          '<p><b>'+ "Number of Times More Likely Than SD County Average: " + regionValue + '</b>' +
+          '<div>'+ 
+          '<h3>' + regionValue + '</h3>' +
+          '<p>'+ "Is the Likelihood of Experiencing an Issue (based on Dataset) for Your Selected Group (Gender and Age),"  + '</p>' +
+          '<p>' + "Compared with the Average Person in San Diego" + '</p>' +
           '</div>'+
           '</div>';
+          
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
@@ -462,6 +465,12 @@ function changeColor() {
   }
   polygons = [];
  loadData();
+}
+
+function activeMenu(menu, id) {
+  $(menu).find(".active").removeClass("active");
+  $(id).addClass("active");
+  console.log("class added");
 }
 
 $(document).ready(function() {
@@ -618,6 +627,8 @@ var controller = Leap.loop({enableGestures: true}, function(frame){
     });
 });
 
+
+
 function datasetAlcoholInjury() {
   d3.json("json/2010-2011-Alcohol-Involved-Motor-Vehicle-Crash-Inj.json", function(data) {
     datasetSelected = data;
@@ -626,6 +637,8 @@ function datasetAlcoholInjury() {
   });
   var element = document.getElementById('dataset');
   element.innerHTML = 'Alcohol Vehicular Injuries  <span class="caret"></span>';
+  activeMenu(".dMenu", "#d0");
+
 }
 function datasetTotalInjury() {
   d3.json("json/2010-2011-Total-Injuries-Due-To-Motor-Vehicle-Cras.json", function(data) {
@@ -635,6 +648,7 @@ function datasetTotalInjury() {
   });
   var element = document.getElementById('dataset');
   element.innerHTML = 'Total Vehicular Injuries  <span class="caret"></span>';
+  activeMenu(".dMenu", "#d1");
 }
 function datasetAnxiety(){
   d3.json("json/2010-2012-Anxiety-Disorder.json", function(data) {
@@ -644,6 +658,7 @@ function datasetAnxiety(){
   });
   var element = document.getElementById('dataset');
   element.innerHTML = 'Anxiety Disorder <span class="caret"></span>';
+  activeMenu(".dMenu", "#d2");
 }
 function datasetAssults(){
   d3.json("json/2010-2012-Assaults.json", function(data) {
@@ -653,6 +668,7 @@ function datasetAssults(){
   });
   var element = document.getElementById('dataset');
   element.innerHTML = 'Assults  <span class="caret"></span>';
+  activeMenu(".dMenu", "#d3");
 }
 function datasetAsthma() {
   d3.json("json/2010-2012-Asthma.json", function(data) {
@@ -662,6 +678,7 @@ function datasetAsthma() {
   });
   var element = document.getElementById('dataset');
   element.innerHTML = 'Asthma  <span class="caret"></span>';
+  activeMenu(".dMenu", "#d4");
 }
 function datasetAlcohol() {
   d3.json("json/2010-2012-Chronic-Alcohol-Related-Disorder.json", function(data) {
@@ -671,6 +688,7 @@ function datasetAlcohol() {
   });
   var element = document.getElementById('dataset');
   element.innerHTML = 'Alcohol Related Disorder  <span class="caret"></span>';
+  activeMenu(".dMenu", "#d5");
 }
 function datasetSubstance() {
   d3.json("json/2010-2012-Chronic-Substance-Related-Disorder.json", function(data) {
@@ -681,6 +699,7 @@ function datasetSubstance() {
   });
   var element = document.getElementById('dataset');
   element.innerHTML = 'Substance Related Disorder  <span class="caret"></span>';
+  activeMenu(".dMenu", "#d6");
 }
 function datasetFirearm() {
   d3.json("json/2010-2012-Firearm-Related-Injuries.json", function(data) {
@@ -690,6 +709,7 @@ function datasetFirearm() {
   });
   var element = document.getElementById('dataset');
   element.innerHTML = 'Firearm Injuries  <span class="caret"></span>';
+  activeMenu(".dMenu", "#d7");
 }
 function datasetHomicide() {
   d3.json("json/2010-2012-Homicide.json", function(data) {
@@ -699,6 +719,7 @@ function datasetHomicide() {
   });
   var element = document.getElementById('dataset');
   element.innerHTML = 'Homicide  <span class="caret"></span>';
+  activeMenu(".dMenu", "#d8");
 }
 function datasetLungCancer() {
   d3.json("json/2010-2012-Lung-Cancer.json", function(data) {
@@ -708,6 +729,7 @@ function datasetLungCancer() {
   });
   var element = document.getElementById('dataset');
   element.innerHTML = 'Lung Cancer <span class="caret"></span>';
+  activeMenu(".dMenu", "#d9");
 }
 function datasetSelfInjury() {
   d3.json("json/2010-2012-Self-Inflicted-Injury.json", function(data) {
@@ -717,6 +739,7 @@ function datasetSelfInjury() {
   });
   var element = document.getElementById('dataset');
   element.innerHTML = 'Self Injury  <span class="caret"></span>';
+  activeMenu(".dMenu", "#d10");
 }
 function filterMale() {
   genderSelected = "male";
@@ -725,6 +748,7 @@ function filterMale() {
   console.log("male selected");
   var element = document.getElementById('gender');
   element.innerHTML = 'Male  <span class="caret"></span>';
+  activeMenu(".gMenu", "#g0");
 }
 function filterFemale() {
   genderSelected = "female";
@@ -733,6 +757,7 @@ function filterFemale() {
   console.log("female selected");
   var element = document.getElementById('gender');
   element.innerHTML = 'Female <span class="caret"></span>';
+  activeMenu(".gMenu", "#g1");
 }
 function clearGender() {
   console.log("gender filter cleared");
@@ -746,6 +771,8 @@ function filter0To14() {
   console.log("0-14 selected");
   var element = document.getElementById('age');
   element.innerHTML = '0 - 14 <span class="caret"></span>';
+  activeMenu(".aMenu", "#a0");
+
 }
 function filter15To24() {
   ageSelected = "ages15-24";
@@ -754,6 +781,7 @@ function filter15To24() {
   console.log("15-24 selected");
   var element = document.getElementById('age');
   element.innerHTML = '15 - 24 <span class="caret"></span>';
+  activeMenu(".aMenu", "#a1");
 }
 function filter25To44() {
   ageSelected = "ages25-44";
@@ -762,6 +790,7 @@ function filter25To44() {
   console.log("25-44 selected");
   var element = document.getElementById('age');
   element.innerHTML = '25 - 44  <span class="caret"></span>';
+  activeMenu(".aMenu", "#a2");
 }
 function filter45To64() {
   ageSelected = "ages45-64";
@@ -770,6 +799,7 @@ function filter45To64() {
   console.log("45-64 selected");
   var element = document.getElementById('age');
   element.innerHTML = '45 - 64  <span class="caret"></span>';
+  activeMenu(".aMenu", "#a3");
 }
 function filter65() {
   ageSelected = "ages65+";
@@ -778,6 +808,7 @@ function filter65() {
   console.log("65+ selected");
   var element = document.getElementById('age');
   element.innerHTML = '65 +  <span class="caret"></span>';
+  activeMenu(".aMenu", "#a4");
 }
 
 

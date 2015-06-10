@@ -11,18 +11,18 @@
     <button type="button" class="btn btn-default btn-nav-label disabled" disabled>DATASET</button>
     <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="dataset" data-toggle="dropdown" aria-expanded="false">{{dataset}} <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu" role="menu">
-      <li><a onClick="datasetAlcoholInjury()">Alcohol Vehicular Injuries</a></li>
-      <li><a onClick="datasetTotalInjury()">Total Vehicular Injuries</a></li>
-      <li><a onClick="datasetAnxiety()">Anxiety Disorder</a></li>
-      <li><a onClick="datasetAssults()">Assults</a></li>
-      <li><a onClick="datasetAsthma()">Asthma</a></li>
-      <li><a onClick="datasetAlcohol()">Alcohol Related Disorder</a></li>
-      <li><a onClick="datasetSubstance()">Substance Related Disorder</a></li>
-      <li><a onClick="datasetFirearm()">Firearm Injuries</a></li>
-      <li><a onClick="datasetHomicide()">Homicide</a></li>
-      <li><a onClick="datasetLungCancer()">Lung Cancer</a></li>
-      <li><a onClick="datasetSelfInjury()">Self Injury</a></li>
+    <ul class="dropdown-menu dMenu" role="menu">
+      <li id="d0"><a onClick="datasetAlcoholInjury()">Alcohol Vehicular Injuries</a></li>
+      <li id="d1"><a onClick="datasetTotalInjury()">Total Vehicular Injuries</a></li>
+      <li id="d2"><a onClick="datasetAnxiety()">Anxiety Disorder</a></li>
+      <li id="d3"><a onClick="datasetAssults()">Assults</a></li>
+      <li id="d4"><a onClick="datasetAsthma()">Asthma</a></li>
+      <li id="d5"><a onClick="datasetAlcohol()">Alcohol Related Disorder</a></li>
+      <li id="d6"><a onClick="datasetSubstance()">Substance Related Disorder</a></li>
+      <li id="d7"><a onClick="datasetFirearm()">Firearm Injuries</a></li>
+      <li id="d8"><a onClick="datasetHomicide()">Homicide</a></li>
+      <li id="d9"><a onClick="datasetLungCancer()">Lung Cancer</a></li>
+      <li id="d10"><a onClick="datasetSelfInjury()">Self Injury</a></li>
     </ul>
     </div>
   </div>
@@ -34,9 +34,9 @@
     <button type="button" class="btn btn-default btn-nav-label disabled" disabled>GENDER</button>
     <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="gender" data-toggle="dropdown" aria-expanded="false">{{gender}} <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu" role="menu">
-      <li><a onClick="filterMale()">Male</a></li>
-      <li><a onClick="filterFemale()">Female</a></li>
+    <ul class="dropdown-menu gMenu" role="menu">
+      <li id="g0"><a onClick="filterMale()">Male</a></li>
+      <li id="g1"><a onClick="filterFemale()">Female</a></li>
     </ul>
     </div>
   </div>
@@ -47,12 +47,12 @@
     <button type="button" class="btn btn-default btn-nav-label disabled" disabled>AGE</button>
     <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="age" data-toggle="dropdown" aria-expanded="false">{{age}} <span class="caret"></span>
     </button>
-    <ul class="dropdown-menu" role="menu">
-      <li><a onClick="filter0To14()">0 - 14</a></li>
-      <li><a onClick="filter15To24()">15 - 24</a></li>
-      <li><a onClick="filter25To44()">25 - 44</a></li>
-      <li><a onClick="filter45To64()">45 - 64</a></li>
-      <li><a onClick="filter65()">65 +</a></li>
+    <ul class="dropdown-menu aMenu" role="menu">
+      <li id="a0"><a onClick="filter0To14()">0 - 14</a></li>
+      <li id="a1"><a onClick="filter15To24()">15 - 24</a></li>
+      <li id="a2"><a onClick="filter25To44()">25 - 44</a></li>
+      <li id="a3"><a onClick="filter45To64()">45 - 64</a></li>
+      <li id="a4"><a onClick="filter65()">65 +</a></li>
     </ul>
     </div>
   </div>
@@ -62,7 +62,7 @@
 
   <div class="btn-group btn-navbar">
     <button type="button" class="btn btn-default btn-nav-label disabled" disabled>LOCATION</button>
-    <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="location" data-toggle="dropdown" aria-expanded="false" disabled>(click on map)
+    <button type="button" class="btn btn-default btn-nav dropdown-toggle" id="location" data-toggle="dropdown" aria-expanded="false" disabled>(click on map for more info)
     </button>
     </div>
   </div>
@@ -78,20 +78,42 @@
 
 
 <!-- TODO: content goes here -->
+<div class="container-fluid">
 <div style="width:100%;height:500px;">
   <div id="googleMap"></div>
 </div>
 <div id="selectArea"></div>
+</div>
 <!--
 <div style="width:60%;height:400px;margin-left:20%;" id="chart"></div>
 -->
+
+
 <div class="container">
-<h4 class="text-lightest" style="font-weight: bold;">Number of Times More Likely Than SD County Average</h4>
-<h4 class="text-lightest" style="color:orange">by Gender</h4>
+  <div class="col-xs-2 text-center">
+  <h4 class="text-lightest">Lowest Risk</h4>
+  </div>
+  <div class="col-xs-2" style="background-color:#FFCCCC; opacity:0.7;height:10px; margin-top: 10px;">
+  </div>
+  <div class="col-xs-2" style="background-color:#FF9999; opacity:0.7;height:10px; margin-top: 10px;">
+  </div>
+  <div class="col-xs-2" style="background-color:#FF4D4D;opacity:0.7;height:10px; margin-top: 10px;">
+  </div>
+  <div class="col-xs-2 text-center">
+    <h4 class="text-lightest">Highest Risk</h4>
+  </div>
+  <div class="col-xs-2 text-center">
+    <h6 class="text-lightest">*No Color: Data Not Available</h6>
+  </div>
+</div>
+<div class="container">
+<h4 class="text-lighter">Risk of Experiencing an Issue (based on Dataset) for Your Gender and Age <small text="text-lightest" style="color:#EEE">Compared with the Average Person in San Diego</small></h4>
+<h5 class="text-lighter text-center">Click on map to highlight neighborhood</h5>
+<h4 class="text-lightest" style="color:orange">by Gender <small text="text-lightest" style="color:#FFC966">(higher value indicates higher risk)</small></h4>
 <div style="height:30%">
   <div id="genderchart"></div>
 </div>
-<h4 class="text-lightest" style="color:orange">by Age</h4>
+<h4 class="text-lightest" style="color:orange">by Age <small text="text-lightest" style="color:#FFC966">(higher value indicates higher risk)</small</h4>
 <div id="agechart"></div>
 </div>
 
